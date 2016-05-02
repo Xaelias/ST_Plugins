@@ -125,7 +125,7 @@ class BranchedWorkspace(sublime_plugin.EventListener):
             if win.folders() != [] and win.folders()[0] == root:
                 for view in win.views():
                     view.set_scratch(True)
-                win.run_command('close_window')
+                win.run_command('close_all')
 
     def load_saved_projects(self, view):
         print("running def load_saved_projects(self, view):")
@@ -166,7 +166,6 @@ class BranchedWorkspace(sublime_plugin.EventListener):
                     f.close()
 
             for win in obj[branch]:
-                sublime.run_command('new_window')
                 new_win = sublime.active_window()
                 new_win.set_project_data({
                     'folders': [{'path': root, 'follow_symlinks': True}]
